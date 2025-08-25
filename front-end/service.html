@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+ <header>
+        <nav class="navbar flex">
+            <a href="#" class="logo">COFFEE<span>SHOP</span></a>
+            <ul class="navlist flex container">
+                <li><a href="index.html" class="link ">HOME</a></li>
+                <li><a href="about.html" class="link link-active">ABOUT</a></li>
+                <li><a href="MENU.html" class="link">MENU</a></li>
+                <li><a href="service.html" class="link">SERVICE</a></li>
+                <li><a href="contact.html" class="link">CONTACT US</a></li>
+                <li class="nav-icons flex">
+                    <!-- serch bar -->
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search here..." />
+                        <button onclick="searchFunction()">Search</button>
+                    </div>
+                    <!-- Menu Icon -->
+                    <div id="menu-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <!-- Hidden Login Modal -->
+                    <div id="login-modal" class="hidden">
+                        <div class="login-box">
+                            <h2>Login</h2>
+                            <input type="text" placeholder="Username" />
+                            <input type="password" placeholder="Password" />
+                            <button>Login</button>
+                        </div>
+                    </div>
+  <!-- fav icon -->
+                    <a href="#" id="fav-icon" class="icon">
+                        <i class="fa-solid fa-heart"></i>
+                        <span id="fav-item-count">0</span>
+                    </a>
+                    <!-- Favorite Sidebar -->
+                    <div id="fav-sidebar" class="fav-sidebar">
+                        <button id="close-fav-btn" class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Your Favorites</h2>
+                        <div id="fav-items-container" class="cart-items-container"></div>
+                    </div>
+
+
+                    <!-- shoppping icon -->
+                    <a href="#" id="cart-icon" class="icon icon-active">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-item-count">0</span>
+                    </a>
+                    <!-- Cart Icon in Navbar -->
+                    <div id="cart-overlay" class="cart-overlay"></div>
+                    <div id="cart-sidebar" class="cart-sidebar">
+                        <button id="close-cart-btn" class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Your Cart</h2>
+                        <div id="cart-items-container" class="cart-items-container"></div>
+                        <p class="total-price">Total: $<span id="cart-total-price">0.00</span></p>
+                    </div>
+
+                </li>
+            </ul>
+            <a href="#" class="hamburger"><i class="fa-solid fa-bars"></i></a>
+   
+        </nav>
+    </header>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #4b2e2e;
+    }
+
+    .section-title p {
+      font-size: 18px;
+      color: #6a5c5c;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .about-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .about-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .about-item h4 {
+      font-size: 22px;
+      margin: 15px 0 10px;
+      color: #3e2d2d;
+    }
+
+    .about-item p {
+      font-size: 16px;
+      color: #5b4d4d;
+      padding: 0 15px;
+    }
+  </style>
+</head>
+<body>
+      <!-- <section>
+     <div>
+  <video width="100%"  controls>
+  <source src="web video.mp4" type="video/mp4">
+</video>
+</div>
+</section> -->
+  <!-- 1sr -->
+   <section class="about-us">
+  <div class="about-heading">
+    <h5>ABOUT US</h5>
+    <h2>Serving Since 1950</h2>
+  </div>
+
+  <div class="about-content">
+    <div class="about-left">
+      <h3>Our Story</h3>
+      <p><strong>Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea</strong></p>
+      <p>
+        Takimata sed vero vero no sit sed, justo clita duo no duo amet et, nonumy kasd sed dolor eos diam lorem eirmod. 
+        Amet sit amet amet no. Est nonumy sed labore eirmod sit magna. Erat at est justo sit ut. Labor diam sed ipsum et eirmod
+      </p>
+      <button class="btn-dark">Learn More</button>
+    </div>
+
+    <div class="about-image">
+      <img src="about1.jpg" alt="Coffee Splash">
+    </div>
+
+    <div class="about-right">
+      <h3>Our Vision</h3>
+      <p>
+        Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+        Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor
+      </p>
+      <ul>
+        <li>✔ Lorem ipsum dolor sit amet</li>
+        <li>✔ Lorem ipsum dolor sit amet</li>
+        <li>✔ Lorem ipsum dolor sit amet</li>
+      </ul>
+      <button class="btn-gold">Learn More</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- 2nd -->
+ 
+    </div>
+    <section class="reservation-section">
+  <div class="reservation-container">
+    <div class="reservation-left">
+      <h1><span>GET IN TOUCH</span></h1>
+ 
+      <p>
+        Lorem justo clita erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+        Erat justo sed sed diam. Ea et erat ut sed diam sea
+      </p>
+      <ul>
+        </i> OPEN HOUR</li>
+        <li><i class="fas fa-check"></i>MONDAY-FRIDAY </li>
+        <li><i class="fas fa-check"></i> 8.00AM-8.00PM</li>
+      </ul>
+    </div>
+   <div class="reservation-right">
+  <h2>Sign-Up</h2>
+  <form id="signup-form" class="booking-form" method="post">
+      <input type="text" id="name" name="name" placeholder="Name" required />
+      <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+      <input type="email" id="email" name="email" placeholder="email" required />
+      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required />
+      <button type="submit">Sign-Up</button>
+  </form>
+</div>
+</section>
+  <script src="../middle/script.js"></script>
+</body>
+</html>

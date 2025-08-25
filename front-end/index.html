@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar flex">
+            <a href="#" class="logo">COFFEE<span>SHOP</span></a>
+            <ul class="navlist flex container">
+                <li><a href="index.html" class="link link-active">HOME</a></li>
+                <li><a href="about.html" class="link link-active">ABOUT</a></li>
+                <li><a href="MENU.html" class="link link-active">MENU</a></li>
+                <li><a href="service.html" class="link link-active">SERVICE</a></li>
+                <li><a href="contact.html" class="link link-active">CONTACT US</a></li>
+                <li class="nav-icons flex">
+                    <!-- serch bar -->
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search here..." />
+                        <button onclick="searchFunction()">Search</button>
+                    </div>
+                    <!-- Menu Icon -->
+                    <div id="menu-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <!-- Hidden Login Modal -->
+                    <div id="login-modal" class="hidden">
+                        <div class="login-box">
+                            <h2>Sign-in</h2>
+                            <input type="text" placeholder="Username" />
+                            <input type="password" placeholder="Password" />
+                            <button id="signin-btn">Sign-in</button>
+                        </div>
+                    </div>
+                    <!-- fav icon -->
+                    <a href="#" id="fav-icon" class="icon">
+                        <i class="fa-solid fa-heart"></i>
+                        <span id="fav-item-count">0</span>
+                    </a>
+                    <!-- Favorite Sidebar -->
+                    <div id="fav-sidebar" class="fav-sidebar">
+                        <button id="close-fav-btn" class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Your Favorites</h2>
+                        <div id="fav-items-container" class="cart-items-container"></div>
+                    </div>
+
+
+                    <!-- shoppping icon -->
+                    <a href="#" id="cart-icon" class="icon icon-active">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-item-count">0</span>
+                    </a>
+                    <!-- Cart Icon in Navbar -->
+                    <div id="cart-overlay" class="cart-overlay"></div>
+                    <div id="cart-sidebar" class="cart-sidebar">
+                        <button id="close-cart-btn" class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Your Cart</h2>
+                        <div id="cart-items-container" class="cart-items-container"></div>
+                        <p class="total-price">Total: $<span id="cart-total-price">0.00</span></p>
+                        <button>BUY NOW</button>
+                    </div>
+
+                </li>
+            </ul>
+            <a href="#" class="hamburger"><i class="fa-solid fa-bars"></i></a>
+
+        </nav>
+    </header>
+    <main>
+        <section class="coffee">
+            <div class="coffee-content flex">
+                <h1>START YOUR DAY WITH A COFFEE</h1>
+                <h3>NOW YOU CAN FEEL THE ENERGY</h3>
+
+            </div>
+        </section>
+
+        <section class="section1">
+            <div class="grid">
+                <div class="item1"><img class="grid-image" src="image1.jpg" alt="image 1" /></div>
+                <div class="item2"><img class="grid-image" src="image2.avif" alt="image 2" /></div>
+                <div class="item3"><img class="grid-image" src="image4.jpg" alt="image 3" /></div>
+                <div class="item4"><img class="grid-image" src="image5.jpg" alt="image 4" /></div>
+                <div class="item5"><img class="grid-image" src="image6.jpg" alt="image 5" /></div>
+                <div class="item6"><img class="grid-image" src="image7.jpg" alt="image 6" /></div>
+                <div class="item7"><img class="grid-image" src="image8.jpg" alt="image 7" /></div>
+                <div class="item8"><img class="grid-image" src="image9.jpg" alt="image 8" /></div>
+            </div>
+        </section>
+        <!-- 4th way -->
+        <section class="section">
+            <div class="container ">
+                <h2>BEST SALE</h2>
+                <div class="line"></div>
+                <div class="card-container flex wrap">
+                    <div class="card">
+                        <img src="coffee1.jpeg">
+                        <div class="card-content">
+                            <p class="tittle">
+                                BLACK COFFEE
+                            </p>
+                            <div class="price">
+                                <span class="amount">$100.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="card new">
+                        <img src="coffee3.avif">
+                        <div class="card-content">
+                            <p class="tittle">
+                                ESPRESSO
+                            </p>
+                            <div class="price">
+                                <span class="amount">$100.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="card ">
+                        <img src="coffee2.webp">
+                        <div class="card-content">
+                            <p class="tittle">
+                                CAPPUCCINO
+                            </p>
+                            <div class="price">
+                                <span class="amount">$250.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="card new ">
+                        <img src="cofffee4.jpg">
+                        <div class="card-content">
+                            <p class="tittle">
+                                ICED CARAMEL LATTE
+                            </p>
+                            <div class="price">
+                                <span class="amount">$200.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="card-container flex wrap">
+                    <div class="card ">
+                        <img src="coffee6.jpeg">
+                        <div class="card-content">
+                            <p class="tittle">
+                                LATTE
+                            </p>
+                            <div class="price">
+                                <span class="amount">$500.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 10 -->
+                    <div class="card new ">
+                        <img src="coffee7.avif">
+                        <div class="card-content">
+                            <p class="tittle">
+                                COLD BREW WITH CREAM TOPPING
+                            </p>
+                            <div class="price">
+                                <span class="amount">$100.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 11 -->
+                    <div class="card ">
+                        <img src="cofffee3.jpg">
+                        <div class="card-content">
+                            <p class="tittle">
+                                HOT CHOCOLATE
+                            </p>
+                            <div class="price">
+                                <span class="amount">$250.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <!-- 12 -->
+                    <div class="card new">
+                        <img src="coffee1.jpeg">
+                        <div class="card-content">
+                            <p class="tittle">
+                                AMERICANO
+                            </p>
+                            <div class="price">
+
+                                <span class="amount">$150.00</span>
+                            </div>
+                            <button class="add-to-cart">add-to-cart</button>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 id="new_coll">COFFEE BEANS</h2>
+            <div class="line"></div>
+            <div class="card-container flex wrap">
+
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="French-Roast-Coffee.jpg" alt="French Roast">
+                    <div class="card-content">
+                        <p class="tittle">FRENCH-ROAST COFFEE BEANS</p>
+                        <div class="price">
+                            <span class="amount">$100.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card sale">
+                    <img src="arabica-coffee-beans.webp" alt="Arabica Beans">
+                    <div class="card-content">
+                        <p class="tittle">ARABICA COFFEE BEANS</p>
+                        <div class="price">
+                            <del>$200.00</del>
+                            <span class="amount">$100.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card new">
+                    <img src="robusta.jpg" alt="Robusta Beans">
+                    <div class="card-content">
+                        <p class="tittle">ROBUSTA COFFEE BEANS</p>
+                        <div class="price">
+                            <span class="amount">$250.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card new">
+                    <img src="liberica-coffee.webp" alt="Liberica Beans">
+                    <div class="card-content">
+                        <p class="tittle">LIBERICA COFFEE BEANS</p>
+                        <div class="price">
+                            <span class="amount">$200.00</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="secondary-bg">
+                <div class="container flex">
+                    <form class="container flex">
+                        <h3>signup for send newsletter</h3>
+                        <div class="input-container flex">
+                            <input type="email" name="email" id="email" placeholder="your email" autocomplete="off">
+                            <button>Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="social-icons flex">
+                        <a href="#" class="media">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="media">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#" class="media">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="#" class="media">
+                            <i class="fa-brands fa-behance"></i>
+                        </a>
+                        <a href="#" class="media">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- fotter head -->
+        <footer class="section">
+            <div class="footer-container container flex">
+                <ul class="footer-list">
+                    <li>
+                        <a href="#" class="footer-link">about us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">online store</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">contact</a>
+                    </li>
+                </ul>
+                <ul class="footer-list">
+                    <li>
+                        <a href="#" class="footer-link">login/register</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">your card</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">wishlist items</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">your checkout</a>
+                    </li>
+                </ul>
+
+                <ul class="footer-list">
+                    <a href="#" class="footer-link">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">team pf service</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">privacy policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">return</a>
+                    </li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-logo"></li>
+                    <a href="#" class="logo">
+                        COFFEE.<span>SHOP.</span>
+                    </a>
+                    <li>
+                        <p class="detail">ABC city,xyz Road</p>
+                    </li>
+                    <li>
+                        <p class="detail">COFFEESHOP@gmail.com</p>
+                    </li>
+                    <li>
+                        <p class="detail">+91 798 732 68</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2025
+                    <a href="#" class="footer-link">COFFEESHOP</a>
+                </p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+</body>
+
+</html>
