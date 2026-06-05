@@ -18,7 +18,7 @@ const connectDB = async () => {
             lastName: 'User',
             phoneNumber: ''
         });
-        console.log('Default admin user created (admin / admin123)');
+        console.log('Default admin user created (admin@coffeeshop.com / admin123)');
     }
 };
 

@@ -11,6 +11,7 @@ const newsletterRoutes = require('./routes/newsletterRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const favoritesRoutes = require('./routes/favoritesRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -46,7 +47,15 @@ app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/booking', bookingRoutes);
+app.use('/api/orders', orderRoutes);
 app.use('/api', authRoutes);
+
+const frontEndPath = path.join(__dirname, '..', 'front-end');
+app.use(express.static(frontEndPath));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(frontEndPath, 'index.html'));
+});
 
 const startServer = async () => {
     try {

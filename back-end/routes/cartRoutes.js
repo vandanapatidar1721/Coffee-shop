@@ -5,7 +5,8 @@ const {
     getCart,
     addToCart,
     removeFromCart,
-    clearCart
+    updateCartQuantity,
+    checkout
 } = require('../controllers/cartController');
 
 router.use(requireAuth);
@@ -13,6 +14,7 @@ router.use(requireAuth);
 router.get('/', getCart);
 router.post('/add', addToCart);
 router.post('/remove', removeFromCart);
-router.post('/checkout', clearCart);
+router.post('/update-quantity', updateCartQuantity);
+router.post('/checkout', checkout);
 
 module.exports = router;

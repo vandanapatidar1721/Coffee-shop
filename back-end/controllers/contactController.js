@@ -8,16 +8,20 @@ const handleContact = async (req, res) => {
             return res.status(400).json({ message: 'All fields are required.' });
         }
 
-        const entry = await Contact.create({
+        const emailLower = email.trim().toLowerCase();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLower)) {
+            return res.status(400).json({ message: 'Please enter a valid email address.' });
+        }
+
+        await Contact.create({
             name: name.trim(),
-            email: email.trim().toLowerCase(),
+            email: emailLower,
             subject: subject.trim(),
             message: message.trim()
         });
 
         res.status(201).json({
-            message: 'Message sent successfully!',
-            data: entry
+            message: 'Message sent successfully!'
         });
     } catch (err) {
         res.status(500).json({ message: err.message || 'Could not save message.' });

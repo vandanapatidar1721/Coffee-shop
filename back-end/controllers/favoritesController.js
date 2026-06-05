@@ -1,4 +1,5 @@
 const { getOrCreateFavorites, favToJSON } = require('../utils/favHelper');
+const { resolveProduct } = require('../utils/productHelper');
 
 const getFavorites = async (req, res) => {
     try {
@@ -12,20 +13,22 @@ const getFavorites = async (req, res) => {
 const addToFavorites = async (req, res) => {
     try {
         const { id, name, price, image } = req.body;
+        const resolved = resolveProduct({ id, name, price });
 
-        if (!id || !name) {
-            return res.status(400).json({ message: 'Product information is missing.' });
+        if (!resolved.valid) {
+            return res.status(400).json({ message: resolved.message });
         }
 
+        const product = resolved.product;
         const fav = await getOrCreateFavorites(req.userId);
-        const exists = fav.items.find((item) => String(item.id) === String(id));
+        const exists = fav.items.find((item) => String(item.id) === String(product.id));
 
         if (!exists) {
             fav.items.push({
-                id: String(id),
-                name,
-                price: price || '',
-                image: image || ''
+                id: product.id,
+                name: product.name,
+                price: String(product.price),
+                image: image || product.image
             });
             await fav.save();
         }
@@ -39,6 +42,11 @@ const addToFavorites = async (req, res) => {
 const removeFromFavorites = async (req, res) => {
     try {
         const { id } = req.body;
+
+        if (!id) {
+            return res.status(400).json({ message: 'Product id is required.' });
+        }
+
         const fav = await getOrCreateFavorites(req.userId);
         fav.items = fav.items.filter((item) => String(item.id) !== String(id));
         await fav.save();

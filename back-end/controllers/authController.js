@@ -12,17 +12,17 @@ const handleSignup = async (req, res) => {
         const { name, lastName, email, phoneNumber, password } = req.body;
         const loginName = email;
 
-        log('SIGNUP', 'Request received', { email, name, lastName, phoneNumber });
+        log('SIGNUP', 'Request received');
 
         const emailTaken = await User.findOne({ email });
         if (emailTaken) {
-            log('SIGNUP', 'Failed — email already registered', { email });
+            log('SIGNUP', 'Failed — email already registered');
             return res.status(409).json({ message: 'This email is already registered.' });
         }
 
         const usernameTaken = await User.findOne({ username: loginName });
         if (usernameTaken) {
-            log('SIGNUP', 'Failed — username taken', { email });
+            log('SIGNUP', 'Failed — username taken');
             return res.status(409).json({ message: 'This email is already registered.' });
         }
 
@@ -36,11 +36,7 @@ const handleSignup = async (req, res) => {
             phoneNumber
         });
 
-        log('SIGNUP', 'Success — new account created', {
-            userId: newUser._id.toString(),
-            email: newUser.email,
-            name: newUser.name
-        });
+        log('SIGNUP', `Success — user ${newUser._id.toString()}`);
 
         res.status(201).json({
             message: 'Account created! You can log in with your email and password.',
@@ -60,7 +56,7 @@ const handleLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        log('LOGIN', 'Request received', { email: email || '(missing)' });
+        log('LOGIN', 'Request received');
 
         if (!email || !password) {
             log('LOGIN', 'Failed — email or password missing');
@@ -71,13 +67,13 @@ const handleLogin = async (req, res) => {
         const user = await User.findOne({ email: emailLower });
 
         if (!user) {
-            log('LOGIN', 'Failed — user not found', { email: emailLower });
+            log('LOGIN', 'Failed — user not found');
             return res.status(401).json({ message: 'Invalid email or password.' });
         }
 
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
-            log('LOGIN', 'Failed — wrong password', { email: emailLower });
+            log('LOGIN', 'Failed — wrong password');
             return res.status(401).json({ message: 'Invalid email or password.' });
         }
 
@@ -88,11 +84,7 @@ const handleLogin = async (req, res) => {
             { expiresIn: '7d' }
         );
 
-        log('LOGIN', 'Success — user logged in', {
-            userId,
-            email: user.email,
-            name: user.name || ''
-        });
+        log('LOGIN', `Success — user ${userId}`);
 
         res.status(200).json({
             message: 'Login successful!',
