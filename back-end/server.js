@@ -24,7 +24,10 @@ if (!process.env.JWT_SECRET) {
 const dataDir = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || 'https://coffeeshopofvandu.netlify.app',
+    credentials: true
+  }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
